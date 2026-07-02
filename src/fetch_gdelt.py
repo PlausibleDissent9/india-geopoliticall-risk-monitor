@@ -27,9 +27,13 @@ import requests
 
 API = "https://api.gdeltproject.org/api/v2/doc/doc"
 CHUNK_DAYS = 180
-SLEEP_S = 1.0
-RETRIES = 3
+# GDELT DOC API rate-limits at 1 request / 5s (observed HTTP 429, July 2026).
+# 6s gives headroom. Backfill is slow as a result (~30-50 min) but reliable.
+SLEEP_S = 6.0
+RETRIES = 4
 TIMEOUT_S = 60
+# Extra pause specifically after a 429 before retrying, in seconds.
+RATE_LIMIT_BACKOFF_S = 15
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
@@ -53,6 +57,9 @@ def _fetch_chunk(query: str, start: date, end: date) -> list[dict]:
     for attempt in range(1, RETRIES + 1):
         try:
             r = requests.get(API, params=params, timeout=TIMEOUT_S)
+            if r.status_code == 429:
+                # Rate limited: wait the dedicated backoff, then retry.
+                raise RuntimeError(f"HTTP 429 rate limit: {r.text[:150]}")
             if r.status_code != 200:
                 raise RuntimeError(f"HTTP {r.status_code}: {r.text[:200]}")
             body = r.json()  # raises ValueError on HTML error pages
@@ -62,7 +69,11 @@ def _fetch_chunk(query: str, start: date, end: date) -> list[dict]:
             return series[0].get("data", [])
         except (ValueError, requests.RequestException, RuntimeError) as e:
             last_err = e
-            time.sleep(2 * attempt)
+            # Longer wait if it was a rate-limit; escalating otherwise.
+            if "429" in str(e):
+                time.sleep(RATE_LIMIT_BACKOFF_S * attempt)
+            else:
+                time.sleep(2 * attempt)
     raise RuntimeError(
         f"GDELT fetch failed after {RETRIES} attempts for "
         f"{start}..{end}. Last error: {last_err}"
