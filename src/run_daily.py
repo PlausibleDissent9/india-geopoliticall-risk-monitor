@@ -42,7 +42,11 @@ def publish_latest_note() -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--backfill", action="store_true")
-    ap.add_argument("--from", dest="from_date", default="2017-01-01")
+    # 2022 start keeps total GDELT requests within the free-tier rate budget
+    # so a full backfill completes in one run. Covers Ukraine, Oct 7, Red Sea,
+    # and Operation Sindoor -- every validation event needed for launch.
+    # Extend earlier later via Option B (chunked resume) if 2017-21 is wanted.
+    ap.add_argument("--from", dest="from_date", default="2022-01-01")
     args = ap.parse_args()
 
     with open(ROOT / "dictionaries.json", "r", encoding="utf-8") as f:
