@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "version": "0.1-SEED",
+    "frozen_on": null,
+    "owner_note": "TERMS ARE ISHAN'S DECISION. Seeds below exist only to demonstrate format. Expand each channel to 8-15 structural terms (geography, institutions, doctrine, chokepoints). Every term must be defensible in an interview: 'why this, why not that'. Document rationale in methodology.md section 2. Set frozen_on (YYYY-MM-DD) at launch; after freezing, any change goes in the methodology.md changelog.",
+    "ex_ante_rule": "No retrospective event names (Galwan, Pulwama, Balakot, Sindoor, Kargil, Uri, 26/11...). Enforced by tests/test_dictionaries.py. Spikes at those events must be DETECTED by structural terms, not baked in."
+  },
+  "pakistan_west": {
+    "label": "Pakistan / Western Border",
+    "terms": [
+      "\"Line of Control\"",
+      "\"India Pakistan border\"",
+      "\"India Pakistan tensions\"",
+      "\"cross-border firing\" India"
+    ]
+  },
+  "china_east": {
+    "label": "China / Eastern Border",
+    "terms": [
+      "\"Line of Actual Control\"",
+      "\"India China border\"",
+      "\"eastern Ladakh\"",
+      "\"Arunachal Pradesh\" China"
+    ]
+  },
+  "gulf_energy": {
+    "label": "Gulf & Energy Security",
+    "terms": [
+      "\"Strait of Hormuz\"",
+      "\"Gulf tensions\" oil",
+      "\"Middle East\" \"oil supply\"",
+      "\"crude supply disruption\""
+    ]
+  },
+  "us_trade": {
+    "label": "US & Trade Policy",
+    "terms": [
+      "\"India tariffs\"",
+      "\"India US trade\"",
+      "\"trade restrictions\" India",
+      "\"export controls\" India"
+    ]
+  },
+  "shipping": {
+    "label": "Shipping & Chokepoints",
+    "terms": [
+      "\"Red Sea\" shipping",
+      "\"Suez Canal\" disruption",
+      "\"Strait of Malacca\"",
+      "\"shipping lanes\" attack"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# Yahoo-derived raw data: regenerated on every run, not redistributed.
+# The GDELT store (gdelt_volume.csv) IS committed - backfill is expensive.
+data/raw/prices.csv
+data/raw/derived_returns.csv

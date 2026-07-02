@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>India Geopolitical Risk Monitor</title>
+<meta name="description" content="A daily, category-decomposed index of geopolitical risk salience for India, with open data and methodology." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <div>
+      <p class="mono-eyebrow">IGRM</p>
+      <h1>India Geopolitical Risk Monitor</h1>
+      <p class="tagline">Daily press-salience of geopolitical risk for India, decomposed by channel. Updated 18:00 IST.</p>
+    </div>
+    <nav class="mast-links">
+      <a href="https://github.com/CHANGEME/india-geopolitical-risk-monitor/blob/main/methodology.md">Methodology</a>
+      <a href="data/history.csv" download>Download CSV</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="instrument" aria-labelledby="composite-label">
+    <div class="composite">
+      <p class="mono-eyebrow" id="composite-label">Composite · <span id="latest-date">—</span></p>
+      <p class="big-number" id="composite-score" aria-live="polite">—</p>
+      <p class="delta" id="composite-delta">—</p>
+      <div class="band" role="img" aria-label="Risk band scale from calm to severe">
+        <div class="band-track"></div>
+        <div class="band-tick" id="band-tick"></div>
+        <div class="band-labels"><span>calm</span><span>elevated</span><span>severe</span></div>
+      </div>
+    </div>
+    <div class="components" id="components">
+      <p class="empty">No data yet — run the pipeline once (README, step 4).</p>
+    </div>
+  </section>
+
+  <section class="chart-section">
+    <div class="chart-head">
+      <h2>History</h2>
+      <div class="ranges" role="group" aria-label="Chart range">
+        <button data-range="90" class="range-btn">3M</button>
+        <button data-range="365" class="range-btn is-active">1Y</button>
+        <button data-range="all" class="range-btn">All</button>
+      </div>
+    </div>
+    <div class="toggles" id="series-toggles"></div>
+    <div class="chart-wrap"><canvas id="history-chart" height="120"></canvas></div>
+  </section>
+
+  <section class="note-section">
+    <h2>This week's note</h2>
+    <article class="note" id="weekly-note">
+      <p class="empty">No note published yet.</p>
+    </article>
+  </section>
+
+  <section class="archive-section">
+    <h2>Episode archive</h2>
+    <p class="section-sub">Days where a channel's coverage volume exceeded its 90-day mean by two standard deviations, clustered into episodes.</p>
+    <div class="table-scroll">
+      <table id="episodes-table">
+        <thead><tr><th>Start</th><th>End</th><th>Channel</th><th>Peak</th><th>Days</th></tr></thead>
+        <tbody><tr><td colspan="5" class="empty">No episodes yet.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <p>Open data: <a href="data/history.csv" download>history.csv</a> · <a href="data/event_study.json">event_study.json</a> · <a href="https://github.com/CHANGEME/india-geopolitical-risk-monitor">source</a></p>
+  <p class="fine">A descriptive research index of news salience. Association, not causation. Not investment advice.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
