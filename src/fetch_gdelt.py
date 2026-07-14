@@ -18,6 +18,7 @@ Known failure modes (expect these in the first debug loop):
 from __future__ import annotations
 
 import json
+import random
 import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -30,10 +31,28 @@ CHUNK_DAYS = 180
 # GDELT DOC API rate-limits at 1 request / 5s (observed HTTP 429, July 2026).
 # 6s gives headroom. Backfill is slow as a result (~30-50 min) but reliable.
 SLEEP_S = 6.0
-RETRIES = 4
+# 429s observed in testing aren't only a function of our own request spacing
+# -- shared egress infra means other traffic on the same IP can trip GDELT's
+# limiter too. With backoff capped at 30s, more retries costs little wall
+# time and rides out longer bursts instead of giving up on them.
+RETRIES = 8
 TIMEOUT_S = 60
-# Extra pause specifically after a 429 before retrying, in seconds.
-RATE_LIMIT_BACKOFF_S = 15
+# Backoff between retries: exponential with jitter, capped at 30s so a long
+# backfill doesn't stall for minutes on a single flaky chunk. The floor is
+# GDELT's own documented minimum spacing (1 request / 5s) -- "full jitter"
+# starting from 0 let retries land under 5s apart and immediately re-trip
+# the rate limiter, which is what caused the 429 loop.
+BACKOFF_BASE_S = 5.0
+BACKOFF_CAP_S = 30.0
+
+
+def _backoff_delay(attempt: int) -> float:
+    """Exponential backoff with jitter, floored at BACKOFF_BASE_S (GDELT's
+    minimum request spacing) and capped at BACKOFF_CAP_S: sleep a random
+    amount in [base, min(cap, base * 2**attempt)]."""
+    ceiling = min(BACKOFF_CAP_S, BACKOFF_BASE_S * (2 ** attempt))
+    return random.uniform(BACKOFF_BASE_S, ceiling)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
@@ -58,7 +77,7 @@ def _fetch_chunk(query: str, start: date, end: date) -> list[dict]:
         try:
             r = requests.get(API, params=params, timeout=TIMEOUT_S)
             if r.status_code == 429:
-                # Rate limited: wait the dedicated backoff, then retry.
+                # Rate limited: back off exponentially (with jitter), then retry.
                 raise RuntimeError(f"HTTP 429 rate limit: {r.text[:150]}")
             if r.status_code != 200:
                 raise RuntimeError(f"HTTP {r.status_code}: {r.text[:200]}")
@@ -69,11 +88,8 @@ def _fetch_chunk(query: str, start: date, end: date) -> list[dict]:
             return series[0].get("data", [])
         except (ValueError, requests.RequestException, RuntimeError) as e:
             last_err = e
-            # Longer wait if it was a rate-limit; escalating otherwise.
-            if "429" in str(e):
-                time.sleep(RATE_LIMIT_BACKOFF_S * attempt)
-            else:
-                time.sleep(2 * attempt)
+            if attempt < RETRIES:
+                time.sleep(_backoff_delay(attempt))
     raise RuntimeError(
         f"GDELT fetch failed after {RETRIES} attempts for "
         f"{start}..{end}. Last error: {last_err}"
