@@ -125,6 +125,22 @@ def write_site_outputs(scores: pd.DataFrame, episodes: pd.DataFrame,
     }
     (SITE_DATA / "history.json").write_text(json.dumps(hist_json), encoding="utf-8")
 
+    if hist.empty:
+        latest = {
+            "date": None,
+            "updated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "composite": {"score": None, "delta_1d": None},
+            "components": {},
+        }
+        (SITE_DATA / "latest.json").write_text(json.dumps(latest, indent=2), encoding="utf-8")
+
+        ep = episodes.copy()
+        for c in ("start", "end"):
+            if c in ep.columns:
+                ep[c] = ep[c].astype(str)
+        ep.to_json(SITE_DATA / "episodes.json", orient="records")
+        return
+
     last = hist.iloc[-1]
     prev = hist.iloc[-2] if len(hist) > 1 else last
     latest = {
