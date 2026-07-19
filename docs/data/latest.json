@@ -1,0 +1,35 @@
+{
+  "date": "2026-07-19",
+  "updated_utc": "2026-07-19T06:10:53+00:00",
+  "composite": {
+    "score": 79.4,
+    "delta_1d": 2.2
+  },
+  "components": {
+    "pakistan_west": {
+      "label": "Pakistan / Western Border",
+      "score": 59.3,
+      "delta_1d": -33.3
+    },
+    "china_east": {
+      "label": "China / Eastern Border",
+      "score": 93.7,
+      "delta_1d": 62.2
+    },
+    "gulf_energy": {
+      "label": "Gulf & Energy Security",
+      "score": 90.0,
+      "delta_1d": 6.3
+    },
+    "us_trade": {
+      "label": "US & Trade Policy",
+      "score": 56.2,
+      "delta_1d": -36.3
+    },
+    "shipping": {
+      "label": "Shipping & Chokepoints",
+      "score": 97.8,
+      "delta_1d": 11.9
+    }
+  }
+}

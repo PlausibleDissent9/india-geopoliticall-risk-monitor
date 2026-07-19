@@ -1,0 +1,377 @@
+{
+  "note": "Associated cumulative relative returns around risk episodes. Association, not causation. t-stats are descriptive orientation only.",
+  "by_channel": {
+    "china_east": {
+      "nifty_rel_em": {
+        "1d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.00578,
+          "associated_median_cum_return": 0.0057,
+          "descriptive_tstat": 1.91
+        },
+        "5d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": -0.00289,
+          "associated_median_cum_return": -0.00337,
+          "descriptive_tstat": -0.58
+        },
+        "20d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": -0.01357,
+          "associated_median_cum_return": -0.01574,
+          "descriptive_tstat": -1.49
+        }
+      },
+      "defence_rel": {
+        "1d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.00383,
+          "associated_median_cum_return": 0.00492,
+          "descriptive_tstat": 0.88
+        },
+        "5d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.00251,
+          "associated_median_cum_return": 0.00365,
+          "descriptive_tstat": 0.41
+        },
+        "20d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.01555,
+          "associated_median_cum_return": 0.03059,
+          "descriptive_tstat": 1.21
+        }
+      },
+      "inr_rel_dxy": {
+        "1d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.00061,
+          "associated_median_cum_return": 0.00027,
+          "descriptive_tstat": 0.6
+        },
+        "5d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.00159,
+          "associated_median_cum_return": -0.00125,
+          "descriptive_tstat": 0.98
+        },
+        "20d": {
+          "n_episodes": 26,
+          "associated_mean_cum_return": 0.00438,
+          "associated_median_cum_return": 0.00176,
+          "descriptive_tstat": 1.1
+        }
+      }
+    },
+    "composite": {
+      "nifty_rel_em": {
+        "1d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": 0.0036,
+          "associated_median_cum_return": 0.00459,
+          "descriptive_tstat": 2.49
+        },
+        "5d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": 0.00436,
+          "associated_median_cum_return": 0.00451,
+          "descriptive_tstat": 1.19
+        },
+        "20d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": -0.00446,
+          "associated_median_cum_return": 0.00824,
+          "descriptive_tstat": -0.61
+        }
+      },
+      "defence_rel": {
+        "1d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": 0.00413,
+          "associated_median_cum_return": 0.00095,
+          "descriptive_tstat": 1.33
+        },
+        "5d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": 0.00904,
+          "associated_median_cum_return": 0.00385,
+          "descriptive_tstat": 1.61
+        },
+        "20d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": 0.03826,
+          "associated_median_cum_return": 0.02945,
+          "descriptive_tstat": 3.0
+        }
+      },
+      "inr_rel_dxy": {
+        "1d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": -7e-05,
+          "associated_median_cum_return": -0.00038,
+          "descriptive_tstat": -0.08
+        },
+        "5d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": -0.00041,
+          "associated_median_cum_return": -0.00109,
+          "descriptive_tstat": -0.32
+        },
+        "20d": {
+          "n_episodes": 44,
+          "associated_mean_cum_return": 0.00212,
+          "associated_median_cum_return": 0.00264,
+          "descriptive_tstat": 0.79
+        }
+      }
+    },
+    "gulf_energy": {
+      "nifty_rel_em": {
+        "1d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.0032,
+          "associated_median_cum_return": 0.00373,
+          "descriptive_tstat": 1.72
+        },
+        "5d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.00081,
+          "associated_median_cum_return": 0.00226,
+          "descriptive_tstat": 0.16
+        },
+        "20d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": -0.01451,
+          "associated_median_cum_return": -0.00625,
+          "descriptive_tstat": -1.83
+        }
+      },
+      "defence_rel": {
+        "1d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.00087,
+          "associated_median_cum_return": 0.0013,
+          "descriptive_tstat": 0.25
+        },
+        "5d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.01008,
+          "associated_median_cum_return": 0.00465,
+          "descriptive_tstat": 1.64
+        },
+        "20d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.00387,
+          "associated_median_cum_return": -0.01519,
+          "descriptive_tstat": 0.39
+        }
+      },
+      "inr_rel_dxy": {
+        "1d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": -0.0021,
+          "associated_median_cum_return": -0.00158,
+          "descriptive_tstat": -2.45
+        },
+        "5d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.00097,
+          "associated_median_cum_return": -9e-05,
+          "descriptive_tstat": 0.49
+        },
+        "20d": {
+          "n_episodes": 31,
+          "associated_mean_cum_return": 0.00392,
+          "associated_median_cum_return": 0.00356,
+          "descriptive_tstat": 1.17
+        }
+      }
+    },
+    "pakistan_west": {
+      "nifty_rel_em": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.00089,
+          "associated_median_cum_return": -0.0003,
+          "descriptive_tstat": -0.45
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.00425,
+          "associated_median_cum_return": -0.00151,
+          "descriptive_tstat": -1.04
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.00744,
+          "associated_median_cum_return": -0.00438,
+          "descriptive_tstat": -1.05
+        }
+      },
+      "defence_rel": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00854,
+          "associated_median_cum_return": 0.00608,
+          "descriptive_tstat": 2.42
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.01621,
+          "associated_median_cum_return": 0.00551,
+          "descriptive_tstat": 2.08
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.05392,
+          "associated_median_cum_return": 0.04753,
+          "descriptive_tstat": 3.91
+        }
+      },
+      "inr_rel_dxy": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00107,
+          "associated_median_cum_return": 9e-05,
+          "descriptive_tstat": 1.13
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.0001,
+          "associated_median_cum_return": 0.00056,
+          "descriptive_tstat": -0.07
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00172,
+          "associated_median_cum_return": 0.00192,
+          "descriptive_tstat": 0.66
+        }
+      }
+    },
+    "shipping": {
+      "nifty_rel_em": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00201,
+          "associated_median_cum_return": 0.00248,
+          "descriptive_tstat": 1.25
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00414,
+          "associated_median_cum_return": 0.00415,
+          "descriptive_tstat": 0.99
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.00107,
+          "associated_median_cum_return": -0.00023,
+          "descriptive_tstat": -0.17
+        }
+      },
+      "defence_rel": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00061,
+          "associated_median_cum_return": -0.00056,
+          "descriptive_tstat": 0.24
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00759,
+          "associated_median_cum_return": 0.00153,
+          "descriptive_tstat": 1.26
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.03649,
+          "associated_median_cum_return": 0.02487,
+          "descriptive_tstat": 2.93
+        }
+      },
+      "inr_rel_dxy": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.0004,
+          "associated_median_cum_return": 7e-05,
+          "descriptive_tstat": -0.57
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00092,
+          "associated_median_cum_return": 0.00019,
+          "descriptive_tstat": 0.56
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00279,
+          "associated_median_cum_return": 0.00423,
+          "descriptive_tstat": 0.91
+        }
+      }
+    },
+    "us_trade": {
+      "nifty_rel_em": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.00297,
+          "associated_median_cum_return": -0.00138,
+          "descriptive_tstat": -1.12
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.00529,
+          "associated_median_cum_return": -0.00219,
+          "descriptive_tstat": -1.26
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": -0.01043,
+          "associated_median_cum_return": -0.00845,
+          "descriptive_tstat": -1.46
+        }
+      },
+      "defence_rel": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00776,
+          "associated_median_cum_return": 0.00509,
+          "descriptive_tstat": 2.25
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.01545,
+          "associated_median_cum_return": 0.00551,
+          "descriptive_tstat": 2.04
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.05575,
+          "associated_median_cum_return": 0.04847,
+          "descriptive_tstat": 4.04
+        }
+      },
+      "inr_rel_dxy": {
+        "1d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00127,
+          "associated_median_cum_return": 0.00032,
+          "descriptive_tstat": 1.34
+        },
+        "5d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.00012,
+          "associated_median_cum_return": 6e-05,
+          "descriptive_tstat": 0.08
+        },
+        "20d": {
+          "n_episodes": 42,
+          "associated_mean_cum_return": 0.0023,
+          "associated_median_cum_return": 0.00206,
+          "descriptive_tstat": 0.87
+        }
+      }
+    }
+  }
+}
